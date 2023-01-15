@@ -9,7 +9,7 @@ public class CommonItemGradingStrategy implements ItemGradingStrategy {
         item.quality -= Math.min(item.quality, determineDegradingValue(item));
     }
 
-    private Integer determineDegradingValue(Item item) {
+    protected Integer determineDegradingValue(Item item) {
         return BASE_QUALITY_DEGRADING_VALUE * determineDegradingMultiplier(item.sellIn);
     }
 
