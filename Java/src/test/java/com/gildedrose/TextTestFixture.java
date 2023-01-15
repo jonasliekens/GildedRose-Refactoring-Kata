@@ -1,8 +1,12 @@
 package com.gildedrose;
 
+import pl.mjaron.etudes.Obj;
+
+import java.util.Arrays;
+
 public class TextTestFixture {
     public static void main(String[] args) {
-        System.out.println("OMGHAI!");
+        System.out.println("# OMGHAI!");
 
         Item[] items = new Item[] {
                 new Item("+5 Dexterity Vest", 10, 20), //
@@ -24,12 +28,8 @@ public class TextTestFixture {
         }
 
         for (int i = 0; i < days; i++) {
-            System.out.println("-------- day " + i + " --------");
-            System.out.println("name, sellIn, quality");
-            for (Item item : items) {
-                System.out.println(item);
-            }
-            System.out.println();
+            System.out.println("## Day " + i );
+            System.out.println(Obj.asTable(Arrays.asList(items), Item.class));
             app.updateQuality();
         }
     }
