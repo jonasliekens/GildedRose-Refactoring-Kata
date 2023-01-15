@@ -13,7 +13,7 @@ public class CommonItemGradingStrategy implements ItemGradingStrategy {
         return BASE_QUALITY_DEGRADING_VALUE * determineDegradingMultiplier(item.sellIn);
     }
 
-    private Integer determineDegradingMultiplier(Integer sellIn) {
+    protected Integer determineDegradingMultiplier(Integer sellIn) {
         return sellIn <= 0 ? 2 : 1;
     }
 }
