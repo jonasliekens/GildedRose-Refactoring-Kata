@@ -1,6 +1,8 @@
 package com.gildedrose.grader;
 
 import com.gildedrose.Item;
+import com.gildedrose.grader.strategy.ItemGradingStrategy;
+import com.gildedrose.grader.strategy.LegendaryItemGradingStrategy;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

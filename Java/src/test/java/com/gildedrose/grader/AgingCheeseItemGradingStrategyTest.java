@@ -1,6 +1,8 @@
 package com.gildedrose.grader;
 
 import com.gildedrose.Item;
+import com.gildedrose.grader.strategy.AgingCheeseItemGradingStrategy;
+import com.gildedrose.grader.strategy.ItemGradingStrategy;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

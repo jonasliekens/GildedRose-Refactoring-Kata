@@ -1,4 +1,4 @@
-package com.gildedrose.grader;
+package com.gildedrose.grader.strategy;
 
 import com.gildedrose.Item;
 

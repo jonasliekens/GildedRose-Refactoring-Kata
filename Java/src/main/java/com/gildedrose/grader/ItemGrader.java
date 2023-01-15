@@ -2,6 +2,7 @@ package com.gildedrose.grader;
 
 import com.gildedrose.Item;
 import com.gildedrose.classifier.ItemClass;
+import com.gildedrose.grader.strategy.*;
 
 import java.util.Map;
 import java.util.Optional;
