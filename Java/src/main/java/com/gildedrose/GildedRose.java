@@ -25,13 +25,13 @@ class GildedRose {
         Arrays.stream(items).forEach(item -> {
             final ItemClass itemClass = itemClassifier.classifyItem(item);
 
+            // Update quality
+            itemGrader.gradeItem(itemClass, item);
+
             // Update sellIn
             if (!ItemClass.LEGENDARY.equals(itemClass)) {
                 item.sellIn = item.sellIn - 1;
             }
-
-            // Update quality
-            itemGrader.gradeItem(itemClass, item);
         });
     }
 }

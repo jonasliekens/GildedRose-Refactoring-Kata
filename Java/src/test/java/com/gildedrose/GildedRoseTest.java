@@ -8,7 +8,7 @@ class GildedRoseTest {
     @Test
     void itemsDegradeTwiceAsFastAfterSellInDate() {
         // Given
-        Item[] items = new Item[]{new Item("foo", 0, 10)};
+        Item[] items = new Item[]{new Item("foo", -1, 10)};
         GildedRose app = new GildedRose(items);
 
         // When
@@ -18,7 +18,7 @@ class GildedRoseTest {
         Assertions.assertThat(app.items[0]).satisfies(item -> {
             Assertions.assertThat(item.name).isEqualTo("foo");
             Assertions.assertThat(item.quality).isEqualTo(8);
-            Assertions.assertThat(item.sellIn).isEqualTo(-1);
+            Assertions.assertThat(item.sellIn).isEqualTo(-2);
         });
     }
 
@@ -195,7 +195,7 @@ class GildedRoseTest {
     @Test
     void backstagePassesHaveZeroQualityAfterConcertDate() {
         // Given
-        Item[] items = new Item[]{new Item("Backstage passes to a TAFKAL80ETC concert", 0, 25)};
+        Item[] items = new Item[]{new Item("Backstage passes to a TAFKAL80ETC concert", -1, 25)};
         GildedRose app = new GildedRose(items);
 
         // When
@@ -205,7 +205,7 @@ class GildedRoseTest {
         Assertions.assertThat(app.items[0]).satisfies(item -> {
             Assertions.assertThat(item.name).isEqualTo("Backstage passes to a TAFKAL80ETC concert");
             Assertions.assertThat(item.quality).isEqualTo(0);
-            Assertions.assertThat(item.sellIn).isEqualTo(-1);
+            Assertions.assertThat(item.sellIn).isEqualTo(-2);
         });
     }
 
@@ -255,7 +255,7 @@ class GildedRoseTest {
         // Then
         Assertions.assertThat(app.items[0]).satisfies(item -> {
             Assertions.assertThat(item.name).isEqualTo("Conjured apple cake");
-            Assertions.assertThat(item.quality).isEqualTo(18);
+            Assertions.assertThat(item.quality).isEqualTo(20);
             Assertions.assertThat(item.sellIn).isEqualTo(-1);
         });
     }
@@ -272,7 +272,7 @@ class GildedRoseTest {
         // Then
         Assertions.assertThat(app.items[0]).satisfies(item -> {
             Assertions.assertThat(item.name).isEqualTo("The Goblin in the corners code of conduct");
-            Assertions.assertThat(item.quality).isEqualTo(20);
+            Assertions.assertThat(item.quality).isEqualTo(21);
             Assertions.assertThat(item.sellIn).isEqualTo(-1);
         });
     }
