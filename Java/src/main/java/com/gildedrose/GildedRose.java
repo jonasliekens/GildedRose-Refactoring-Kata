@@ -1,5 +1,12 @@
 package com.gildedrose;
 
+import com.gildedrose.classifier.ItemClass;
+import com.gildedrose.classifier.ItemClassifier;
+import com.gildedrose.grader.AgingCheeseItemGradingStrategy;
+import com.gildedrose.grader.BackstagePassItemGradingStrategy;
+import com.gildedrose.grader.CommonItemGradingStrategy;
+import com.gildedrose.grader.ConjuredItemGradingStrategy;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,34 +33,20 @@ class GildedRose {
             }
 
             // Update quality
-            if (ItemClass.COMMON.equals(itemClass) && item.quality > 0) {
-                final int degradingModifier = item.sellIn < 0 ? 2 : 1;
-                item.quality -= Math.min(item.quality, degradingModifier);
+            if (ItemClass.COMMON.equals(itemClass)) {
+                new CommonItemGradingStrategy().gradeItem(item);
             }
 
             if (ItemClass.BACKSTAGE_PASS.equals(itemClass)) {
-                if (item.sellIn < 0) {
-                    item.quality = 0;
-                } else {
-                    if (item.quality < 50) {
-                        if (item.sellIn <= 5) {
-                            item.quality += 3;
-                        } else if (item.sellIn <= 10) {
-                            item.quality += 2;
-                        } else {
-                            item.quality += 1;
-                        }
-                    }
-                }
+                new BackstagePassItemGradingStrategy().gradeItem(item);
             }
 
-            if (ItemClass.AGING_CHEESE.equals(itemClass) && item.quality < 50) {
-                item.quality += 1;
+            if (ItemClass.AGING_CHEESE.equals(itemClass)) {
+                new AgingCheeseItemGradingStrategy().gradeItem(item);
             }
 
-            if (ItemClass.CONJURED.equals(itemClass) && item.quality > 0) {
-                final int degradingModifier = item.sellIn < 0 ? 4 : 2;
-                item.quality -= Math.min(item.quality, degradingModifier);
+            if (ItemClass.CONJURED.equals(itemClass)) {
+                new ConjuredItemGradingStrategy().gradeItem(item);
             }
         });
     }

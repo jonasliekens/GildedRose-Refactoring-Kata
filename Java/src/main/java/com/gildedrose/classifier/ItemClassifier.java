@@ -1,4 +1,6 @@
-package com.gildedrose;
+package com.gildedrose.classifier;
+
+import com.gildedrose.Item;
 
 import java.util.List;
 

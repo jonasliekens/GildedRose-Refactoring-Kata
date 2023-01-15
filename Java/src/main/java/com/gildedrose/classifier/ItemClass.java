@@ -1,4 +1,4 @@
-package com.gildedrose;
+package com.gildedrose.classifier;
 
 public enum ItemClass {
     COMMON,

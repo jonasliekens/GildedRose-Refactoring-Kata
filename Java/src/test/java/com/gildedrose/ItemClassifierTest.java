@@ -1,5 +1,7 @@
 package com.gildedrose;
 
+import com.gildedrose.classifier.ItemClass;
+import com.gildedrose.classifier.ItemClassifier;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
