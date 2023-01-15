@@ -2,10 +2,7 @@ package com.gildedrose;
 
 import com.gildedrose.classifier.ItemClass;
 import com.gildedrose.classifier.ItemClassifier;
-import com.gildedrose.grader.AgingCheeseItemGradingStrategy;
-import com.gildedrose.grader.BackstagePassItemGradingStrategy;
-import com.gildedrose.grader.CommonItemGradingStrategy;
-import com.gildedrose.grader.ConjuredItemGradingStrategy;
+import com.gildedrose.grader.*;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +15,7 @@ class GildedRose {
         legendaryItemNames,
         agingCheeseNames
     );
+    final ItemGrader itemGrader = new ItemGrader();
 
     public GildedRose(Item[] items) {
         this.items = items;
@@ -33,21 +31,7 @@ class GildedRose {
             }
 
             // Update quality
-            if (ItemClass.COMMON.equals(itemClass)) {
-                new CommonItemGradingStrategy().gradeItem(item);
-            }
-
-            if (ItemClass.BACKSTAGE_PASS.equals(itemClass)) {
-                new BackstagePassItemGradingStrategy().gradeItem(item);
-            }
-
-            if (ItemClass.AGING_CHEESE.equals(itemClass)) {
-                new AgingCheeseItemGradingStrategy().gradeItem(item);
-            }
-
-            if (ItemClass.CONJURED.equals(itemClass)) {
-                new ConjuredItemGradingStrategy().gradeItem(item);
-            }
+            itemGrader.gradeItem(itemClass, item);
         });
     }
 }
