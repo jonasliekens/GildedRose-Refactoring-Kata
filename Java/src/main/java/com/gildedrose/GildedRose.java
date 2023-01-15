@@ -1,5 +1,6 @@
 package com.gildedrose;
 
+import java.util.Arrays;
 import java.util.List;
 
 class GildedRose {
@@ -14,7 +15,7 @@ class GildedRose {
     }
 
     public void updateQuality() {
-        for (final Item item : items) {
+        Arrays.stream(items).forEach(item -> {
             final ItemClass itemClass = itemClassifier.classifyItem(item);
 
             // Update sellIn
@@ -47,6 +48,6 @@ class GildedRose {
             if (ItemClass.AGING_CHEESE.equals(itemClass) && item.quality < 50) {
                 item.quality += 1;
             }
-        }
+        });
     }
 }
