@@ -242,4 +242,55 @@ class GildedRoseTest {
             Assertions.assertThat(item.sellIn).isEqualTo(-2);
         });
     }
+
+    @Test
+    void conjuredItemsShouldAlsoDegradeWhenSellInIsZero() {
+        // Given
+        Item[] items = new Item[]{new Item("Conjured apple cake", 0, 22)};
+        GildedRose app = new GildedRose(items);
+
+        // When
+        app.updateQuality();
+
+        // Then
+        Assertions.assertThat(app.items[0]).satisfies(item -> {
+            Assertions.assertThat(item.name).isEqualTo("Conjured apple cake");
+            Assertions.assertThat(item.quality).isEqualTo(18);
+            Assertions.assertThat(item.sellIn).isEqualTo(-1);
+        });
+    }
+
+    @Test
+    void commonItemsShouldAlsoDegradeWhenSellInIsZero() {
+        // Given
+        Item[] items = new Item[]{new Item("The Goblin in the corners code of conduct", 0, 22)};
+        GildedRose app = new GildedRose(items);
+
+        // When
+        app.updateQuality();
+
+        // Then
+        Assertions.assertThat(app.items[0]).satisfies(item -> {
+            Assertions.assertThat(item.name).isEqualTo("The Goblin in the corners code of conduct");
+            Assertions.assertThat(item.quality).isEqualTo(20);
+            Assertions.assertThat(item.sellIn).isEqualTo(-1);
+        });
+    }
+
+    @Test
+    void agingCheeseShouldStillIncreaseInValueWhenSellInIsZero() {
+        // Given
+        Item[] items = new Item[]{new Item("Aged Brie", 0, 22)};
+        GildedRose app = new GildedRose(items);
+
+        // When
+        app.updateQuality();
+
+        // Then
+        Assertions.assertThat(app.items[0]).satisfies(item -> {
+            Assertions.assertThat(item.name).isEqualTo("Aged Brie");
+            Assertions.assertThat(item.quality).isEqualTo(23);
+            Assertions.assertThat(item.sellIn).isEqualTo(-1);
+        });
+    }
 }
