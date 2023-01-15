@@ -6,6 +6,23 @@ import org.junit.jupiter.api.Test;
 class GildedRoseTest {
 
     @Test
+    void itemsDegradeTwiceAsFastAfterSellInDate() {
+        // Given
+        Item[] items = new Item[]{new Item("foo", 0, 10)};
+        GildedRose app = new GildedRose(items);
+
+        // When
+        app.updateQuality();
+
+        // Then
+        Assertions.assertThat(app.items[0]).satisfies(item -> {
+            Assertions.assertThat(item.name).isEqualTo("foo");
+            Assertions.assertThat(item.quality).isEqualTo(8);
+            Assertions.assertThat(item.sellIn).isEqualTo(-1);
+        });
+    }
+
+    @Test
     void itemsDoNotDegradePastZero() {
         // Given
         Item[] items = new Item[]{new Item("foo", 0, 0)};
