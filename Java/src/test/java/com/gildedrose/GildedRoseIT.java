@@ -33,7 +33,7 @@ public class GildedRoseIT {
         final List<String> stringifiedItems = Arrays.stream(items).map(Item::toString).toList();
         Assertions.assertThat(stringifiedItems).containsExactlyInAnyOrder(
             "+5 Dexterity Vest, 5, 15",
-            "Aged Brie, -3, 5",
+            "Aged Brie, -3, 8",
             "Elixir of the Mongoose, 0, 2",
             "Sulfuras, Hand of Ragnaros, 0, 80",
             "Sulfuras, Hand of Ragnaros, -1, 80",

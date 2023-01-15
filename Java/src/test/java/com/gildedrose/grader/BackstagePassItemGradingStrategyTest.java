@@ -20,6 +20,18 @@ class BackstagePassItemGradingStrategyTest {
     }
 
     @Test
+    void backstagePassLosesValueOnConcert() {
+        // Given
+        final Item item = new Item("Alestorm Backstage Pass", 0, 10);
+
+        // When
+        itemGradingStrategy.gradeItem(item);
+
+        // Then
+        Assertions.assertThat(item.quality).isEqualTo(0);
+    }
+
+    @Test
     void backstagePassIncreasesInValue() {
         // Given
         final Item item = new Item("Alestorm Backstage Pass", 15, 10);

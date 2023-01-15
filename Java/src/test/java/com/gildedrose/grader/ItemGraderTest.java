@@ -17,7 +17,7 @@ class ItemGraderTest {
         itemGrader.gradeItem(ItemClass.COMMON, item);
 
         // Then
-        Assertions.assertThat(item.quality).isEqualTo(9);
+        Assertions.assertThat(item.quality).isEqualTo(8);
     }
 
     @Test
@@ -29,7 +29,7 @@ class ItemGraderTest {
         itemGrader.gradeItem(ItemClass.CONJURED, item);
 
         // Then
-        Assertions.assertThat(item.quality).isEqualTo(8);
+        Assertions.assertThat(item.quality).isEqualTo(6);
     }
 
     @Test
@@ -41,7 +41,7 @@ class ItemGraderTest {
         itemGrader.gradeItem(ItemClass.BACKSTAGE_PASS, item);
 
         // Then
-        Assertions.assertThat(item.quality).isEqualTo(13);
+        Assertions.assertThat(item.quality).isEqualTo(0);
     }
 
     @Test
@@ -53,7 +53,7 @@ class ItemGraderTest {
         itemGrader.gradeItem(ItemClass.AGING_CHEESE, item);
 
         // Then
-        Assertions.assertThat(item.quality).isEqualTo(11);
+        Assertions.assertThat(item.quality).isEqualTo(12);
     }
 
     @Test

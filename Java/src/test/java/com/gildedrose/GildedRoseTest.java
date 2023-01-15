@@ -210,6 +210,23 @@ class GildedRoseTest {
     }
 
     @Test
+    void backstagePassesLoseQualityOnConcertDate() {
+        // Given
+        Item[] items = new Item[]{new Item("Backstage passes to a TAFKAL80ETC concert", 0, 25)};
+        GildedRose app = new GildedRose(items);
+
+        // When
+        app.updateQuality();
+
+        // Then
+        Assertions.assertThat(app.items[0]).satisfies(item -> {
+            Assertions.assertThat(item.name).isEqualTo("Backstage passes to a TAFKAL80ETC concert");
+            Assertions.assertThat(item.quality).isEqualTo(0);
+            Assertions.assertThat(item.sellIn).isEqualTo(-1);
+        });
+    }
+
+    @Test
     void conjuredItemsDegradeTwiceAsFast() {
         // Given
         Item[] items = new Item[]{new Item("Conjured apple cake", 5, 22)};
@@ -244,7 +261,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void conjuredItemsShouldAlsoDegradeWhenSellInIsZero() {
+    void conjuredItemsShouldAlsoDegradeTwiceAsFastWhenSellInIsZero() {
         // Given
         Item[] items = new Item[]{new Item("Conjured apple cake", 0, 22)};
         GildedRose app = new GildedRose(items);
@@ -255,13 +272,13 @@ class GildedRoseTest {
         // Then
         Assertions.assertThat(app.items[0]).satisfies(item -> {
             Assertions.assertThat(item.name).isEqualTo("Conjured apple cake");
-            Assertions.assertThat(item.quality).isEqualTo(20);
+            Assertions.assertThat(item.quality).isEqualTo(18);
             Assertions.assertThat(item.sellIn).isEqualTo(-1);
         });
     }
 
     @Test
-    void commonItemsShouldAlsoDegradeWhenSellInIsZero() {
+    void commonItemsShouldAlsoDegradeTwiceAsFastWhenSellInIsZero() {
         // Given
         Item[] items = new Item[]{new Item("The Goblin in the corners code of conduct", 0, 22)};
         GildedRose app = new GildedRose(items);
@@ -272,13 +289,13 @@ class GildedRoseTest {
         // Then
         Assertions.assertThat(app.items[0]).satisfies(item -> {
             Assertions.assertThat(item.name).isEqualTo("The Goblin in the corners code of conduct");
-            Assertions.assertThat(item.quality).isEqualTo(21);
+            Assertions.assertThat(item.quality).isEqualTo(20);
             Assertions.assertThat(item.sellIn).isEqualTo(-1);
         });
     }
 
     @Test
-    void agingCheeseShouldStillIncreaseInValueWhenSellInIsZero() {
+    void agingCheeseShouldIncreaseTwiceAsFastWhenSellInIsZero() {
         // Given
         Item[] items = new Item[]{new Item("Aged Brie", 0, 22)};
         GildedRose app = new GildedRose(items);
@@ -289,7 +306,7 @@ class GildedRoseTest {
         // Then
         Assertions.assertThat(app.items[0]).satisfies(item -> {
             Assertions.assertThat(item.name).isEqualTo("Aged Brie");
-            Assertions.assertThat(item.quality).isEqualTo(23);
+            Assertions.assertThat(item.quality).isEqualTo(24);
             Assertions.assertThat(item.sellIn).isEqualTo(-1);
         });
     }

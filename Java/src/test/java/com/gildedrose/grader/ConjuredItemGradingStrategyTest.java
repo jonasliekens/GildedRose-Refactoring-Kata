@@ -32,33 +32,21 @@ class ConjuredItemGradingStrategyTest {
     }
 
     @Test
-    void conjuredItemDegradesByTwoWhenSellInIsZero() {
+    void conjuredItemDegradesByFourWhenSellInIsZero() {
         // Given
-        final Item item = new Item("conjured item", 0, 1);
+        final Item item = new Item("conjured item", 0, 5);
 
         // When
         itemGradingStrategy.gradeItem(item);
 
         // Then
-        Assertions.assertThat(item.quality).isEqualTo(0);
-    }
-
-    @Test
-    void conjuredItemDegradesToExactlyZeroWithSellInLesserThanZero() {
-        // Given
-        final Item item = new Item("conjured item", -1, 2);
-
-        // When
-        itemGradingStrategy.gradeItem(item);
-
-        // Then
-        Assertions.assertThat(item.quality).isEqualTo(0);
+        Assertions.assertThat(item.quality).isEqualTo(1);
     }
 
     @Test
     void conjuredItemNeverDegradesBelowZeroWithSellInAboveZero() {
         // Given
-        final Item item = new Item("conjured item", 1, 0);
+        final Item item = new Item("conjured item", 1, 1);
 
         // When
         itemGradingStrategy.gradeItem(item);

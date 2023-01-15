@@ -20,7 +20,7 @@ class AgingCheeseItemGradingStrategyTest {
     }
 
     @Test
-    void agingCheeseIncreasesInQualityEvenWithNegativeSellIn() {
+    void agingCheeseIncreasesTwiceInQualityWithNegativeSellIn() {
         // Given
         final Item item = new Item("Blue chiieeeuuuwws", -1, 1);
 
@@ -28,13 +28,37 @@ class AgingCheeseItemGradingStrategyTest {
         itemGradingStrategy.gradeItem(item);
 
         // Then
-        Assertions.assertThat(item.quality).isEqualTo(2);
+        Assertions.assertThat(item.quality).isEqualTo(3);
     }
 
     @Test
     void agingCheeseQualityCanNeverExceedFifty() {
         // Given
         final Item item = new Item("Blue chiieeeuuuwws", 0, 50);
+
+        // When
+        itemGradingStrategy.gradeItem(item);
+
+        // Then
+        Assertions.assertThat(item.quality).isEqualTo(50);
+    }
+
+    @Test
+    void agingCheeseQualityCanNeverExceedFiftyWithNegativeSellIn() {
+        // Given
+        final Item item = new Item("Blue chiieeeuuuwws", -1, 50);
+
+        // When
+        itemGradingStrategy.gradeItem(item);
+
+        // Then
+        Assertions.assertThat(item.quality).isEqualTo(50);
+    }
+
+    @Test
+    void agingCheeseQualityCanNeverExceedFiftyWithPositiveSellIn() {
+        // Given
+        final Item item = new Item("Blue chiieeeuuuwws", 1, 50);
 
         // When
         itemGradingStrategy.gradeItem(item);

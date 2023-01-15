@@ -32,21 +32,21 @@ class CommonItemGradingStrategyTest {
     }
 
     @Test
-    void commonItemDegradesByOneWhenSellInIsZero() {
+    void commonItemDegradesByTwoWhenSellInIsZero() {
         // Given
-        final Item item = new Item("some item", 0, 1);
+        final Item item = new Item("some item", 0, 5);
 
         // When
         itemGradingStrategy.gradeItem(item);
 
         // Then
-        Assertions.assertThat(item.quality).isEqualTo(0);
+        Assertions.assertThat(item.quality).isEqualTo(3);
     }
 
     @Test
-    void commonItemDegradesToExactlyZeroWithSellInLesserThanZero() {
+    void commonItemDegradesToExactlyZeroWithSellInAboveThanZero() {
         // Given
-        final Item item = new Item("some item", -1, 2);
+        final Item item = new Item("some item", 1, 1);
 
         // When
         itemGradingStrategy.gradeItem(item);

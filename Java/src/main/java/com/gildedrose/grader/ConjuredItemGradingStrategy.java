@@ -13,6 +13,6 @@ public class ConjuredItemGradingStrategy implements ItemGradingStrategy{
     }
 
     private Integer determineDegradingMultiplier(Integer sellIn) {
-        return sellIn < 0 ? 4 : 2;
+        return sellIn <= 0 ? 4 : 2;
     }
 }

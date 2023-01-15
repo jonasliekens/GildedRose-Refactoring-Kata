@@ -14,6 +14,6 @@ public class CommonItemGradingStrategy implements ItemGradingStrategy {
     }
 
     private Integer determineDegradingMultiplier(Integer sellIn) {
-        return sellIn < 0 ? 2 : 1;
+        return sellIn <= 0 ? 2 : 1;
     }
 }

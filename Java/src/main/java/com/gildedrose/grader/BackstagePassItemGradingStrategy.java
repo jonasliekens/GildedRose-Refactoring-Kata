@@ -6,7 +6,7 @@ public class BackstagePassItemGradingStrategy implements ItemGradingStrategy{
 
     @Override
     public void gradeItem(Item item) {
-        if (item.sellIn < 0) {
+        if (item.sellIn <= 0) {
             item.quality = 0;
         } else {
             item.quality = Math.min(MAX_QUALITY_VALUE, item.quality + determineGradingValue(item));
