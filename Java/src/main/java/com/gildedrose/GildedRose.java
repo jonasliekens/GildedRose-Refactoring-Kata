@@ -5,9 +5,11 @@ import java.util.List;
 
 class GildedRose {
     final Item[] items;
+    final List<String> legendaryItemNames = List.of("Sulfuras, Hand of Ragnaros");
+    final List<String> agingCheeseNames = List.of("Aged Brie");
     final ItemClassifier itemClassifier = new ItemClassifier(
-        List.of("Sulfuras, Hand of Ragnaros"),
-        List.of("Aged Brie")
+        legendaryItemNames,
+        agingCheeseNames
     );
 
     public GildedRose(Item[] items) {
@@ -26,7 +28,7 @@ class GildedRose {
             // Update quality
             if (ItemClass.COMMON.equals(itemClass) && item.quality > 0) {
                 final int degradingModifier = item.sellIn < 0 ? 2 : 1;
-                item.quality -= degradingModifier;
+                item.quality -= Math.min(item.quality, degradingModifier);
             }
 
             if (ItemClass.BACKSTAGE_PASS.equals(itemClass)) {

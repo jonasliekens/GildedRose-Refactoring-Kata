@@ -40,6 +40,40 @@ class GildedRoseTest {
     }
 
     @Test
+    void itemsDoNotDegradePastZeroEvenWhenDegradingTwiceAsFast() {
+        // Given
+        Item[] items = new Item[]{new Item("foo", -2, 1)};
+        GildedRose app = new GildedRose(items);
+
+        // When
+        app.updateQuality();
+
+        // Then
+        Assertions.assertThat(app.items[0]).satisfies(item -> {
+            Assertions.assertThat(item.name).isEqualTo("foo");
+            Assertions.assertThat(item.quality).isEqualTo(0);
+            Assertions.assertThat(item.sellIn).isEqualTo(-3);
+        });
+    }
+
+    @Test
+    void itemPerfectlyDegradesToZeroByTwoAfterSellIn() {
+        // Given
+        Item[] items = new Item[]{new Item("foo", -2, 2)};
+        GildedRose app = new GildedRose(items);
+
+        // When
+        app.updateQuality();
+
+        // Then
+        Assertions.assertThat(app.items[0]).satisfies(item -> {
+            Assertions.assertThat(item.name).isEqualTo("foo");
+            Assertions.assertThat(item.quality).isEqualTo(0);
+            Assertions.assertThat(item.sellIn).isEqualTo(-3);
+        });
+    }
+
+    @Test
     void OnlyAgedBrieIncreasesInQuality() {
         // Given
         Item[] items = new Item[]{new Item("Aged Brie", 1, 0)};
