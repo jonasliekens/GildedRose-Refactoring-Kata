@@ -1,5 +1,6 @@
-package com.gildedrose;
+package com.gildedrose.classifier;
 
+import com.gildedrose.Item;
 import com.gildedrose.classifier.ItemClass;
 import com.gildedrose.classifier.ItemClassifier;
 import org.assertj.core.api.Assertions;
