@@ -2,6 +2,10 @@ package com.gildedrose.grader.strategy;
 
 import com.gildedrose.Item;
 
+/**
+ * Common items decrease in value with 1 point.
+ * When the sellIn value is lower or equal to 0, they decrease in value by two points
+ */
 public class CommonItemGradingStrategy implements ItemGradingStrategy {
 
     @Override
