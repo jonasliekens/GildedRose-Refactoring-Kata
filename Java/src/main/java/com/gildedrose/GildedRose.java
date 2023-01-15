@@ -50,6 +50,11 @@ class GildedRose {
             if (ItemClass.AGING_CHEESE.equals(itemClass) && item.quality < 50) {
                 item.quality += 1;
             }
+
+            if (ItemClass.CONJURED.equals(itemClass) && item.quality > 0) {
+                final int degradingModifier = item.sellIn < 0 ? 4 : 2;
+                item.quality -= Math.min(item.quality, degradingModifier);
+            }
         });
     }
 }
